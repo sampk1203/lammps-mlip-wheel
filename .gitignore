@@ -1,0 +1,10 @@
+*.aux
+*.listing
+*.tex
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.bbl
+*.lammps
+

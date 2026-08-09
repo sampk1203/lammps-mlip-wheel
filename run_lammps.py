@@ -34,8 +34,13 @@ from lammps import lammps
 
 
 def build_lammps_args(log, screen, extra_lmp_args):
-    """Translate our CLI options into LAMMPS's own -log/-screen/-var style argv."""
-    args = ["liblammps"]  # argv[0] placeholder -- LAMMPS expects an entry here
+    """Translate our CLI options into LAMMPS's own -log/-screen/-var style argv.
+
+    Note: do NOT prepend an argv[0]/executable-name placeholder here -- the
+    lammps Python constructor already adds that itself. Passing one manually
+    causes LAMMPS to see a duplicate, unrecognized first argument.
+    """
+    args = []
     if log is not None:
         args += ["-log", log]
     if screen is not None:

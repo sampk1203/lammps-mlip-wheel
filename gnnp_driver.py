@@ -40,7 +40,7 @@ def gnnp_initialize(gnnp_type, model_name = None, as_path = False, dftd3 = False
 
     # Check gpu
     gpu    = (gpu and torch.cuda.is_available())
-    device = "cpu" if gpu else "cpu"
+    device = "cuda" if gpu else "cpu"
 
     # Create Calculator of GNNP, that is pre-trained
     global myCalculator

@@ -1,20 +1,11 @@
 # lammps-mlip-wheel
 
-Portable `manylinux_2_28` wheel of LAMMPS (`2026.2.11`) with KIM, MDI, PLUMED,
+Portable `manylinux_2_28` wheel of LAMMPS with KIM, MDI, PLUMED,
 ML-IAP, netCDF, COLVARS, MPI, and ASE-compatible MLIP support via
-`gnnp_driver`. Excludes ADIOS, GPU, KOKKOS, MBX, SCAFACOS, VTK.
+`gnnp_driver`. Excludes ADIOS, KOKKOS, MBX, SCAFACOS, VTK.
 
 MPI, libcurl, and libldap are **not** bundled in the wheel — they must be
 present on the target system already (see below).
-
-## Requirements
-
-- **Python 3.12 only.** The wheel is tagged `cp312` and will not import under
-  3.11, 3.13, or any other minor version. Confirm before installing:
-  ```bash
-  python3 --version   # must print 3.12.x
-  ```
-- Linux, glibc-compatible with `manylinux_2_28` (roughly RHEL 8 / Ubuntu 20.04+).
 
 ## Install runtime dependencies
 
@@ -22,10 +13,24 @@ present on the target system already (see below).
 ```bash
 sudo apt update
 sudo apt install -y \
-    libopenmpi3 openmpi-bin \
-    libcurl4 \
-    libldap-2.5-0 \
-    ffmpeg
+libfftw3-dev \
+libeigen3-dev \
+libcurl4-openssl-dev \
+zlib1g-dev \
+libjpeg-dev \
+libpng-dev \
+libzstd-dev \
+libnetcdf-dev \
+libpnetcdf-dev \
+libgsl-dev \
+libopenblas-dev \
+libhdf5-serial-dev \
+libkim-api-dev \
+cython3 \
+ffmpeg \
+gcc g++ gfortran \
+libopenmpi-dev openmpi-bin openmpi-common \
+python3 python3-dev python3-pip python3-venv python3-full
 ```
 - `libopenmpi3` — runtime MPI library, matches the v40-series ABI the wheel links against.
 - `openmpi-bin` — provides `mpirun`, needed for multi-rank use.
@@ -38,17 +43,17 @@ sudo dnf install -y openmpi libcurl openldap
 
 # ffmpeg from RPM Fusion (not in base repos or EPEL):
 sudo dnf install -y https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
-sudo dnf install -y ffmpeg
+sudo dnf install -y ffmpeg {and other packages which are dnf variants from the apt list}
 ```
 
 ## Install the wheel
 
 ```bash
-pip install "https://github.com/sampk1203/lammps-mlip-wheel/releases/download/v2026.2.11/lammps-2026.2.11-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+pip install "https://github.com/sampk1203/lammps-mlip-wheel/releases/download/v2026.2.11/lammps-{relavant version from releases}-.whl"
 ```
 or with `uv`:
 ```bash
-uv add "https://github.com/sampk1203/lammps-mlip-wheel/releases/download/v2026.2.11/lammps-2026.2.11-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+uv add "https://github.com/sampk1203/lammps-mlip-wheel/releases/download/v2026.2.11/lammps-{relavant version from releases}-.whl"
 ```
 
 ## KIM model data

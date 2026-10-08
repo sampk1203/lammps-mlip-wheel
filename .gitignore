@@ -7,4 +7,7 @@
 *.toc
 *.bbl
 *.lammps
-
+*.whl
+*.gz
+*.fls
+*.fdb_latexmk

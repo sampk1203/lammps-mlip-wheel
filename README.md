@@ -2,7 +2,7 @@
 
 Portable `manylinux_2_28` wheel of LAMMPS with KIM, MDI, PLUMED,
 ML-IAP, netCDF, COLVARS, MPI, and ASE-compatible MLIP support via
-`gnnp_driver`. Excludes ADIOS, KOKKOS, MBX, SCAFACOS, VTK.
+`gnnp_driver`. Excludes ADIOS, KOKKOS, MBX,FENIX, QMMM-XTB, SCAFACOS, VTK.
 
 MPI, libcurl, and libldap are **not** bundled in the wheel — they must be
 present on the target system already (see below).

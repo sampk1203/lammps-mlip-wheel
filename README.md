@@ -13,7 +13,7 @@ present on the target system already (see below).
 ```bash
 sudo apt update
 sudo apt install -y \
-libfftw3-dev build-essential meson cmake cmake-gui-curses\
+libfftw3-dev build-essential meson cmake cmake-curses-gui \
 libeigen3-dev \
 libcurl4-openssl-dev \
 zlib1g-dev \
